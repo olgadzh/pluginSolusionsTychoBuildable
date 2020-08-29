@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Solutions Category"
+            id="com.softcom.ide.test">
+      </category>
+      <view
+            id="com.softcom.ide.test.views.SolutionsView"
+            name="Solutions View"
+            icon="icons/sample.png"
+            class="com.softcom.ide.test.views.SolutionsView"
+            category="com.softcom.ide.test"
+            inject="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="com.softcom.ide.test.views.SolutionsView"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               ratio="0.5">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="solutionsPlugin.commands.category"
+            name="Solutions">
+      </category>
+      <command
+            categoryId="solutionsPlugin.commands.category"
+            name="Show Solutions"
+            id="solutionsPlugin.commands.showSolutions">
+            	<commandParameter
+         		id="org.eclipse.ui.views.showView.viewId"
+         		name="%command.showView.viewIdParameter"
+         		value="com.softcom.ide.test.views.SolutionsView" />
+  				<commandParameter
+     			id="org.eclipse.ui.views.showView.makeFast"
+     			name="%command.showView.makeFastParameter"
+     			optional="true"/>
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="solutions.handlers.ShowSolutionsButtonHandler"
+            commandId="solutionsPlugin.commands.showSolutions">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="solutionsPlugin.commands.showSolutions"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+6">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="solutionsPlugin.menus.solutionsMenu"
+               label="Solutions Menu"
+               mnemonic="M">
+            <command
+                  commandId="solutionsPlugin.commands.showSolutions"
+                  id="solutionsPlugin.menus.showSolutionsCommand"
+                  mnemonic="S">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="solutionsPlugin.toolbars.sampleToolbar">
+            <command
+                  id="solutionsPlugin.toolbars.showSolutionsCommand"
+                  commandId="solutionsPlugin.commands.showSolutions"
+                  icon="icons/sample.png"
+                  tooltip="Show Solutions">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>

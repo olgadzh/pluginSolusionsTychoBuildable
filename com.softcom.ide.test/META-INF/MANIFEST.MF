@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test
+Bundle-SymbolicName: com.softcom.ide.test;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.softcom.ide.test.Activator
+Bundle-Vendor: SOFTCOM
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-14
+Automatic-Module-Name: com.softcom.ide.test
+Import-Package: javax.inject
+Bundle-ActivationPolicy: lazy
