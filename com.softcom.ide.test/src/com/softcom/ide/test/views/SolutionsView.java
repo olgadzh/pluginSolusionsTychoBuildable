@@ -3,6 +3,9 @@ package com.softcom.ide.test.views;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.*;
+
+import com.softcom.ide.testpojo.ServiceSolution;
+
 import org.eclipse.jface.viewers.*;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.jface.action.*;
@@ -10,6 +13,9 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.*;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.SWT;
+
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 
@@ -44,7 +50,7 @@ public class SolutionsView extends ViewPart {
 	private Action action1;
 	private Action action2;
 	private Action doubleClickAction;
-	 
+	private ArrayList<Object> viewerInput; // добавлено поле
 
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
 		@Override
@@ -66,7 +72,12 @@ public class SolutionsView extends ViewPart {
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		
 		viewer.setContentProvider(ArrayContentProvider.getInstance());
-		viewer.setInput(new String[] { "One", "Two", "Three" });
+		//viewer.setInput(new String[] { "One", "Two", "Three" });
+		
+		ServiceSolution service = new ServiceSolution(workbench); // нужно понять, какой нужен параметр
+		viewerInput = new ArrayList<>(service.getSolutions());
+		viewer.setInput(viewerInput);
+		
 	viewer.setLabelProvider(new ViewLabelProvider());
 
 		// Create the help context id for the viewer's control
