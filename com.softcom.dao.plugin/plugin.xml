@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="%oda.data.source.id"
+         point="org.eclipse.datatools.connectivity.oda.dataSource">
+      <dataSource
+            id="%oda.data.source.id"
+            driverClass="com.softcom.dao.plugin.impl.Driver"
+            odaVersion="3.2"
+            defaultDisplayName="%data.source.name"
+            setThreadContextClassLoader="false">
+         <properties>
+            <property
+                  name="property1"
+                  defaultDisplayName="Property 1"
+                  type="string"
+                  isEncryptable="false"
+                  allowsEmptyValueAsNull="true">
+            </property>
+            <property
+                  name="property2"
+                  defaultDisplayName="Property 2"
+                  type="string"
+                  isEncryptable="false"
+                  allowsEmptyValueAsNull="true">
+            </property>
+         </properties>
+      </dataSource>
+      <dataSet
+            id="com.softcom.dao.plugin.dataSet"
+            defaultDisplayName="%data.set.name">
+         <dataTypeMapping
+               nativeDataTypeCode="1"
+               nativeDataType="String"
+               odaScalarDataType="String">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="4"
+               nativeDataType="Integer"
+               odaScalarDataType="Integer">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="8"
+               nativeDataType="Double"
+               odaScalarDataType="Double">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="3"
+               nativeDataType="BigDecimal"
+               odaScalarDataType="Decimal">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="91"
+               nativeDataType="Date"
+               odaScalarDataType="Date">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="92"
+               nativeDataType="Time"
+               odaScalarDataType="Time">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="93"
+               nativeDataType="Timestamp"
+               odaScalarDataType="Timestamp">
+         </dataTypeMapping>
+         <dataTypeMapping
+               nativeDataTypeCode="16"
+               nativeDataType="Boolean"
+               odaScalarDataType="Boolean">
+         </dataTypeMapping>
+      </dataSet>
+   </extension>
+   <extension
+         point="org.eclipse.datatools.connectivity.connectionProfile">
+      <category
+            id="%oda.data.source.id"
+            name="%data.source.name"
+            parentCategory="org.eclipse.datatools.connectivity.oda.profileCategory">
+      </category>
+      <connectionProfile
+            category="%oda.data.source.id"
+            id="%oda.data.source.id"
+            name="%connection.profile.name"
+            pingFactory="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory">
+      </connectionProfile>
+      <connectionFactory
+            id="org.eclipse.datatools.connectivity.oda.IConnection"
+            profile="%oda.data.source.id"
+            name="ODA Connection Factory"
+            class="org.eclipse.datatools.connectivity.oda.profile.OdaConnectionFactory">
+      </connectionFactory>
+   </extension>
+
+</plugin>
