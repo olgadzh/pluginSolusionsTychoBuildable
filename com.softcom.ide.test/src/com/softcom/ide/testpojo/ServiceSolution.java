@@ -7,6 +7,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
+import hibernate.crud.operations.*;
+import hibernate.crud.operations.Solution;
+
 //import org.eclipse.core.runtime.ListenerList;
 //import org.eclipse.jface.util.IPropertyChangeListener;
 
@@ -19,14 +22,15 @@ public class ServiceSolution {
 	public ServiceSolution(IServiceLocator locator) {
 		serviceLocator = locator;
 		serviceLocator.hasService(IHandlerService.class);
-		fillModel();
+	//	fillModel();
 	}
 	
-	private Map<Integer, Solution> fillModel() {
-		return PopulateSolutions.populateSolutions();
-	}
+	//private Map<Integer, Solution> fillModel() {
+	//	return PopulateSolutions.populateSolutions();
+	//}
 	
-	Map<Integer, Solution> solutions = fillModel();
+	//Map<Integer, Solution> solutions = fillModel();
+	Map<Integer, Solution> solutions = RollupDaoSolution.mapAll();
 	
 	//public void addSolutionsChangeListener(IPropertyChangeListener listener) {
 	//	listeners.add(listener);	

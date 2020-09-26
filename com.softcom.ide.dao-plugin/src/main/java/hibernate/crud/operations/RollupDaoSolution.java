@@ -1,6 +1,7 @@
 package hibernate.crud.operations;
 
 import java.util.List;
+import java.util.Map;
 
 public abstract class RollupDaoSolution {
 
@@ -93,6 +94,23 @@ public abstract class RollupDaoSolution {
 	    ds.closeFactory();
 	    
 	    return l;
+	}
+	
+	// SELECT ALL EXISTING ROW FROM TABLE
+	
+	public static Map<Integer, Solution> mapAll() {
+		
+		DaoSolution ds = new DaoSolution();	
+		
+		ds.openFactory();
+	    ds.createManager(); 
+	    
+	    Map<Integer, Solution> m = ds.mapAll();
+	    
+	    ds.closeManager();
+	    ds.closeFactory();
+	    
+	    return m;
 	}
 	
 	// SELECT ALL PROJECTS BY SOLUTION ID

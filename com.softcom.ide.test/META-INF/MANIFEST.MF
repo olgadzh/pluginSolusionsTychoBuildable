@@ -6,8 +6,10 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.softcom.ide.test.Activator
 Bundle-Vendor: SOFTCOM
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ com.softcom.ide.dao-plugin;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-14
 Automatic-Module-Name: com.softcom.ide.test
-Import-Package: javax.inject
+Import-Package: hibernate.crud.operations,
+ javax.inject
 Bundle-ActivationPolicy: lazy

@@ -3,6 +3,7 @@ package hibernate.crud.operations;
 import hibernate.crud.operations.Solution;
 
 import java.util.List;
+import java.util.Map;
 
 import hibernate.crud.operations.RollupDaoSolution;
 
@@ -39,7 +40,10 @@ public class AppSimulation {
     		for (Solution s : l) {
     	    	System.out.println(s.getName());
     	    }
-    		
+    
+    Map<Integer, Solution> m = RollupDaoSolution.mapAll();		
+    m.forEach((key, value) -> System.out.println(key + ":" + value));
+    
     //FIND ONE SOLUTION BY ID
     System.out.println("Found New Solution ID: " + newId + " and name: " + RollupDaoSolution.find(newId).getName());
 
